@@ -66,6 +66,15 @@
 		<title>Java Standard Taglib</title>
 	</head>
 	<body>
+	
+		<c:import url="logout-parcial.jsp"></c:import>
+	
+		Usuario Logado: ${usuarioLogado.login } <!s-- a EL irá buscar no httpsessions se existe este objeto -->
+	
+	    <br>
+	    <br>
+	    <br>
+	    
 		<c:if test="${not empty empresa}">
 			Empresa ${empresa} cadastrada com sucesso! 
 		</c:if>
