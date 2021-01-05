@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("acao Cadastrando uma nova empresa");
 		
@@ -39,7 +38,14 @@ public class NovaEmpresa {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 	
-		request.setAttribute("empresa", empresa.getNome()); //request só sobrevive a uma requisição, não tera efeito, escopo pequeno
-		response.sendRedirect("entrada?acao=ListaEmpresas"); 
+		/*
+		 * O RequestDispatcher mantem a mesma requisição
+		 * O sendRedirect manda outra requisição para o navegador, mandando ele enviar outra requisição de volta
+		 * 
+		 * request.setAttribute("empresa", empresa.getNome()); //request só sobrevive a uma requisição, não tera efeito, escopo pequeno
+		 * response.sendRedirect("entrada?acao=ListaEmpresas");
+		*/ 
+		
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }
