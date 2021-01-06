@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -17,6 +18,12 @@ import javax.servlet.http.HttpSession;
  */
 //@WebFilter("/entrada")
 public class AutorizacaoFilter implements Filter { 
+	
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {}
+
+	@Override
+	public void destroy() {}
 
 	// para definir a ordem de execucao dos filtros, é preciso configurar no xml, declarando os filros. a ordem de execucao será dada pela ordem de declaracao 
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
